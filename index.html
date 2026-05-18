@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Blokowania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Config modal -->
+  <div id="config-modal" class="modal hidden">
+    <div class="modal-box">
+      <h2>Konfiguracja</h2>
+      <label>GitHub repo (owner/repo)
+        <input id="cfg-repo" type="text" placeholder="lukskyfly/block-panel">
+      </label>
+      <label>Personal Access Token
+        <input id="cfg-pat" type="password" placeholder="ghp_...">
+      </label>
+      <button id="cfg-save" class="btn btn-primary">Zapisz</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Panel Blokowania</h1>
+    <div class="header-actions">
+      <button id="btn-refresh" class="btn btn-ghost" title="Odśwież listę">&#8635; Odśwież</button>
+      <button id="btn-config" class="btn btn-ghost" title="Ustawienia">&#9881; Konfiguracja</button>
+    </div>
+  </header>
+
+  <!-- Add form -->
+  <section class="add-form card">
+    <h2>Dodaj domenę</h2>
+    <div class="form-row">
+      <input id="domain-input" type="text" placeholder="np. spam.com" autocomplete="off">
+      <label class="btn btn-ghost upload-label" for="screenshot-input">
+        &#128247; Załącz screenshot
+        <input id="screenshot-input" type="file" accept="image/*" hidden>
+      </label>
+      <button id="btn-add" class="btn btn-primary">+ Dodaj do kolejki</button>
+    </div>
+    <div id="screenshot-preview" class="hidden">
+      <img id="preview-img" src="" alt="preview">
+      <button id="remove-screenshot" class="btn btn-ghost btn-sm">&#10005; Usuń</button>
+    </div>
+  </section>
+
+  <!-- Queue -->
+  <section class="queue card">
+    <div class="queue-header">
+      <h2>Kolejka blokowania</h2>
+      <div class="queue-stats" id="queue-stats"></div>
+    </div>
+    <div id="queue-loading" class="loading-msg">Ładowanie...</div>
+    <div id="queue-empty" class="empty-msg hidden">Kolejka jest pusta.</div>
+    <table id="queue-table" class="hidden">
+      <thead>
+        <tr>
+          <th>Domena</th>
+          <th>Screenshot</th>
+          <th>Dodano</th>
+          <th>Status</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody id="queue-body"></tbody>
+    </table>
+  </section>
+
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
