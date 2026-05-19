@@ -21,9 +21,10 @@ async function ghGet(path) {
   return resp.json();
 }
 
-async function ghPut(path, content, sha, message) {
+async function ghPut(path, content, sha, message, rawBase64 = false) {
   const { repo, pat } = getConfig();
-  const body = { message, content: btoa(unescape(encodeURIComponent(content))) };
+  const encoded = rawBase64 ? content : btoa(unescape(encodeURIComponent(content)));
+  const body = { message, content: encoded };
   if (sha) body.sha = sha;
   const resp = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
     method: 'PUT',
@@ -49,7 +50,7 @@ async function saveQueue(items, sha) {
 async function uploadScreenshot(domain, base64Data, ext) {
   const filename = `screenshots/${domain.replace(/\./g, '_')}_${Date.now()}.${ext}`;
   const { repo } = getConfig();
-  await ghPut(filename, base64Data, null, `Add screenshot for ${domain}`);
+  await ghPut(filename, base64Data, null, `Add screenshot for ${domain}`, true);
   // raw URL
   const [owner, repoName] = repo.split('/');
   return `https://raw.githubusercontent.com/${owner}/${repoName}/main/${filename}`;
