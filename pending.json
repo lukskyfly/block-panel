@@ -6,5 +6,13 @@
     "added": "2026-05-19",
     "status": "blocked",
     "blocked_at": "2026-05-19"
+  },
+  {
+    "id": "icfqm4e9qozvg3of",
+    "domain": "test2",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test2_1779263444242.png",
+    "added": "2026-05-20",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
