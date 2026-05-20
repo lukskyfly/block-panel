@@ -6,13 +6,5 @@
     "added": "2026-05-19",
     "status": "blocked",
     "blocked_at": "2026-05-19"
-  },
-  {
-    "id": "rt3cvom93z9lttpb",
-    "domain": "test1.pl",
-    "screenshot_url": null,
-    "added": "2026-05-20",
-    "status": "pending",
-    "blocked_at": null
   }
 ]
