@@ -114,6 +114,9 @@ function renderQueue(items) {
 
   sorted.forEach(item => {
     const tr = document.createElement('tr');
+    tr.dataset.itemId = item.id;
+    tr.dataset.domain = item.domain;
+    tr.dataset.screenshotUrl = item.screenshot_url || '';
 
     // domain
     const tdDomain = document.createElement('td');
