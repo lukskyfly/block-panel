@@ -6,13 +6,5 @@
     "added": "2026-05-21",
     "status": "pending",
     "blocked_at": null
-  },
-  {
-    "id": "kkx47uuf46vnysyo",
-    "domain": "faktydnia.com",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/faktydnia_com_1779367845808.png",
-    "added": "2026-05-21",
-    "status": "blocked",
-    "blocked_at": "2026-05-21"
   }
 ]
