@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "fg8hs635gqcp92f8",
+    "domain": "faktydnia.com",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/faktydnia_com_1779348300211.png",
+    "added": "2026-05-21",
+    "status": "pending",
+    "blocked_at": null
+  }
+]
