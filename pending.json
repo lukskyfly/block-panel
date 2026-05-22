@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "2sw4sh8kc2gwon3h",
+    "domain": "test16.com",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test16_com_1779444226691.png",
+    "added": "2026-05-22",
+    "status": "pending",
+    "blocked_at": null
+  }
+]
