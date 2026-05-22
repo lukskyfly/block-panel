@@ -268,7 +268,25 @@ function clearScreenshot() {
 }
 
 // === Init ===
+// === Theme ===
+function applyTheme(light) {
+  document.body.classList.toggle('light', light);
+  const icon = document.getElementById('theme-icon');
+  if (icon) icon.textContent = light ? '☀' : '☽';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Dark/light mode
+  const themeSwitch = document.getElementById('theme-switch');
+  const savedLight = localStorage.getItem('theme') === 'light';
+  themeSwitch.checked = savedLight;
+  applyTheme(savedLight);
+  themeSwitch.addEventListener('change', () => {
+    const isLight = themeSwitch.checked;
+    applyTheme(isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
   const { repo, pat } = getConfig();
 
   // Config modal
@@ -292,8 +310,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('config-modal').classList.remove('hidden');
   });
 
-  // Refresh
-  document.getElementById('btn-refresh').addEventListener('click', loadAndRender);
+  // Refresh — hard reload (bypass cache, jak Ctrl+Shift+R)
+  document.getElementById('btn-refresh').addEventListener('click', () => location.reload(true));
   document.getElementById('btn-delete-all').addEventListener('click', deleteAll);
 
   // Add form
