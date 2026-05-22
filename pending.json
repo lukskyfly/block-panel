@@ -1,18 +1,1 @@
-[
-  {
-    "id": "x5ms0hl9nfskyldk",
-    "domain": "test21.com",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test21_com_1779447626325.png",
-    "added": "2026-05-22",
-    "status": "blocked",
-    "blocked_at": "2026-05-22"
-  },
-  {
-    "id": "nt7hlckd8mfcsy3a",
-    "domain": "test22.com",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test22_com_1779447645115.jpg",
-    "added": "2026-05-22",
-    "status": "blocked",
-    "blocked_at": "2026-05-22"
-  }
-]
+[]
