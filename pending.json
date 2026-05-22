@@ -6,5 +6,13 @@
     "added": "2026-05-22",
     "status": "pending",
     "blocked_at": null
+  },
+  {
+    "id": "ut4h2cdxe9mgc4m5",
+    "domain": "althivo.com",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/althivo_com_1779442520316.png",
+    "added": "2026-05-22",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
