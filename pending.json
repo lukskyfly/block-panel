@@ -4,8 +4,8 @@
     "domain": "test34.com",
     "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test34_com_1779457478104.png",
     "added": "2026-05-22",
-    "status": "pending",
-    "blocked_at": null
+    "status": "blocked_partial",
+    "blocked_at": "2026-05-22"
   },
   {
     "id": "lzi65k0zccx49jco",
