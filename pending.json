@@ -6,5 +6,13 @@
     "added": "2026-05-22",
     "status": "pending",
     "blocked_at": null
+  },
+  {
+    "id": "3xoji8km0ws6gui4",
+    "domain": "test20.com",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test20_com_1779447035211.jpg",
+    "added": "2026-05-22",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
