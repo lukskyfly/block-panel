@@ -4,8 +4,8 @@
     "domain": "pohodia.com",
     "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/pohodia_com_1779434662851.png",
     "added": "2026-05-22",
-    "status": "pending",
-    "blocked_at": null
+    "status": "blocked",
+    "blocked_at": "2026-05-22"
   },
   {
     "id": "z96yqvoxksw94vtv",
