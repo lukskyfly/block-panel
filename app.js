@@ -95,9 +95,11 @@ function renderQueue(items) {
   loading.classList.add('hidden');
 
   const pending = items.filter(i => i.status === 'pending').length;
-  const ready   = items.filter(i => i.status === 'ready').length;
-  const blocked = items.filter(i => i.status === 'blocked').length;
-  stats.textContent = `${pending} oczekuje · ${ready} gotowych · ${blocked} zablokowanych`;
+  const blocked = items.filter(i => i.status === 'blocked' || i.status === 'blocked_partial').length;
+  stats.textContent = `${pending} oczekuje · ${blocked} zablokowanych`;
+
+  const btnDeleteAll = document.getElementById('btn-delete-all');
+  if (btnDeleteAll) btnDeleteAll.classList.toggle('hidden', items.length === 0);
 
   if (items.length === 0) {
     empty.classList.remove('hidden');
@@ -152,7 +154,7 @@ function renderQueue(items) {
     const tdStatus = document.createElement('td');
     const badge = document.createElement('span');
     badge.className = `badge badge-${item.status}`;
-    const labels = { pending: 'oczekuje', ready: 'gotowe', blocked: 'zablokowane' };
+    const labels = { pending: 'oczekuje', ready: 'gotowe', blocked: 'zablokowane', blocked_partial: 'częściowo' };
     badge.textContent = labels[item.status] || item.status;
     tdStatus.appendChild(badge);
     tr.appendChild(tdStatus);
@@ -160,21 +162,6 @@ function renderQueue(items) {
     // actions
     const tdActions = document.createElement('td');
     tdActions.className = 'actions-cell';
-
-    if (item.status === 'pending') {
-      const btnBlock = document.createElement('button');
-      btnBlock.className = 'btn btn-warning btn-sm';
-      btnBlock.textContent = 'Blokuj';
-      btnBlock.addEventListener('click', () => markReady(item.id));
-      tdActions.appendChild(btnBlock);
-    }
-
-    if (item.status === 'ready') {
-      const note = document.createElement('span');
-      note.style.cssText = 'font-size:11px;color:var(--warning)';
-      note.textContent = 'Uruchom /block_queue';
-      tdActions.appendChild(note);
-    }
 
     const btnDel = document.createElement('button');
     btnDel.className = 'btn btn-danger btn-sm';
@@ -244,14 +231,14 @@ async function addItem() {
   }
 }
 
-async function markReady(id) {
+async function deleteAll() {
+  if (!confirm(`Usunąć wszystkie ${queueItems.length} pozycji z kolejki?`)) return;
   try {
-    queueItems = queueItems.map(i => i.id === id ? { ...i, status: 'ready' } : i);
-    const result = await saveQueue(queueItems, queueSha);
+    const result = await saveQueue([], queueSha);
     queueSha = result.content.sha;
-    renderQueue(queueItems);
-    const item = queueItems.find(i => i.id === id);
-    showToast(`${item.domain} gotowe do blokady — uruchom /block_queue`, 'success');
+    queueItems = [];
+    renderQueue([]);
+    showToast('Kolejka wyczyszczona', 'info');
   } catch (e) {
     showToast('Błąd: ' + e.message, 'error');
   }
@@ -307,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Refresh
   document.getElementById('btn-refresh').addEventListener('click', loadAndRender);
+  document.getElementById('btn-delete-all').addEventListener('click', deleteAll);
 
   // Add form
   document.getElementById('btn-add').addEventListener('click', addItem);

@@ -155,6 +155,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 .queue-header h2 { margin-bottom: 0; }
 
 .queue-stats { color: var(--text-dim); font-size: 13px; }
+.queue-header-right { display: flex; align-items: center; gap: 10px; }
 
 .loading-msg, .empty-msg {
   text-align: center;
@@ -221,6 +222,7 @@ tr:hover td { background: var(--bg3); }
 .badge-pending { background: rgba(139,148,158,0.15); color: #8b949e; }
 .badge-ready { background: rgba(245,158,11,0.18); color: #f59e0b; }
 .badge-blocked { background: rgba(34,197,94,0.15); color: #22c55e; }
+.badge-blocked_partial { background: rgba(249,115,22,0.18); color: #f97316; }
 
 /* Modal */
 .modal {

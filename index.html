@@ -54,7 +54,10 @@
   <section class="queue card">
     <div class="queue-header">
       <h2>Kolejka blokowania</h2>
-      <div class="queue-stats" id="queue-stats"></div>
+      <div class="queue-header-right">
+        <div class="queue-stats" id="queue-stats"></div>
+        <button id="btn-delete-all" class="btn btn-danger btn-sm hidden">Usuń wszystkie</button>
+      </div>
     </div>
     <div id="queue-loading" class="loading-msg">Ładowanie...</div>
     <div id="queue-empty" class="empty-msg hidden">Kolejka jest pusta.</div>
