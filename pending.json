@@ -6,5 +6,13 @@
     "added": "2026-05-22",
     "status": "pending",
     "blocked_at": null
+  },
+  {
+    "id": "63c9sr4pa4au7cyx",
+    "domain": "pohodia.com",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/pohodia_com_1779438269596.png",
+    "added": "2026-05-22",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
