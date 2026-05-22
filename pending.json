@@ -1,18 +1,1 @@
-[
-  {
-    "id": "3qd22dmlg8sxrnux",
-    "domain": "althivo.com",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/althivo_com_1779443316860.png",
-    "added": "2026-05-22",
-    "status": "pending",
-    "blocked_at": null
-  },
-  {
-    "id": "gg76lud2a872j77t",
-    "domain": "pohodia.com",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/pohodia_com_1779443329635.png",
-    "added": "2026-05-22",
-    "status": "pending",
-    "blocked_at": null
-  }
-]
+[]
