@@ -6,5 +6,13 @@
     "added": "2026-05-24",
     "status": "blocked_partial",
     "blocked_at": "2026-05-24"
+  },
+  {
+    "id": "av5intquyb9po026",
+    "domain": "smartgloves.online",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/smartgloves_online_1779647663218.png",
+    "added": "2026-05-24",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
