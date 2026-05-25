@@ -4,8 +4,8 @@
     "domain": "metallic-stream.com",
     "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/metallic-stream_com_1779691502453.png",
     "added": "2026-05-25",
-    "status": "pending",
-    "blocked_at": null
+    "status": "blocked",
+    "blocked_at": "2026-05-25"
   },
   {
     "id": "f9hjnaf1pk48lpb6",
