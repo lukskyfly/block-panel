@@ -6,5 +6,13 @@
     "added": "2026-05-25",
     "status": "pending",
     "blocked_at": null
+  },
+  {
+    "id": "f9hjnaf1pk48lpb6",
+    "domain": "disactaroc.media",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/disactaroc_media_1779691514571.png",
+    "added": "2026-05-25",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
