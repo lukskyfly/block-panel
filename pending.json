@@ -14,5 +14,13 @@
     "added": "2026-05-25",
     "status": "pending",
     "blocked_at": null
+  },
+  {
+    "id": "peqx6sv1d3t3vrv0",
+    "domain": "fermerooml.center",
+    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/fermerooml_center_1779705515166.png",
+    "added": "2026-05-25",
+    "status": "pending",
+    "blocked_at": null
   }
 ]
