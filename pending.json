@@ -12,8 +12,8 @@
     "domain": "disactaroc.media",
     "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/disactaroc_media_1779691514571.png",
     "added": "2026-05-25",
-    "status": "pending",
-    "blocked_at": null
+    "status": "blocked",
+    "blocked_at": "2026-05-25"
   },
   {
     "id": "entp3xno9j459ydd",
