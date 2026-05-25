@@ -1,18 +1,1 @@
-[
-  {
-    "id": "bsdzv4kliqdiwott",
-    "domain": "testes98.pl",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/testes98_pl_1779713433830.png",
-    "added": "2026-05-25",
-    "status": "pending",
-    "blocked_at": null
-  },
-  {
-    "id": "w0pglxb1elfvgnyc",
-    "domain": "test99.pl",
-    "screenshot_url": "https://raw.githubusercontent.com/lukskyfly/block-panel/main/screenshots/test99_pl_1779713458772.png",
-    "added": "2026-05-25",
-    "status": "pending",
-    "blocked_at": null
-  }
-]
+[]
