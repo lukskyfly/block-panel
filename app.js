@@ -1,6 +1,18 @@
 // === Config ===
-const LS_REPO = 'block_panel_repo';
-const LS_PAT  = 'block_panel_pat';
+const LS_REPO  = 'block_panel_repo';
+const LS_PAT   = 'block_panel_pat';
+const LS_STEPS = 'block_panel_steps';
+const STEP_KEYS = ['grid', 'gam', 'criteo', 'pubmatic', 'wpartner', 'xandr', 'newsletter'];
+
+function getSteps() {
+  const saved = localStorage.getItem(LS_STEPS);
+  if (saved) return JSON.parse(saved);
+  return Object.fromEntries(STEP_KEYS.map(k => [k, true]));
+}
+
+function saveSteps(steps) {
+  localStorage.setItem(LS_STEPS, JSON.stringify(steps));
+}
 
 function getConfig() {
   return { repo: localStorage.getItem(LS_REPO) || '', pat: localStorage.getItem(LS_PAT) || '' };
@@ -276,6 +288,17 @@ function applyTheme(light) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Steps config
+  const steps = getSteps();
+  document.querySelectorAll('.step-cb').forEach(cb => {
+    cb.checked = steps[cb.dataset.step] !== false;
+    cb.addEventListener('change', () => {
+      const current = getSteps();
+      current[cb.dataset.step] = cb.checked;
+      saveSteps(current);
+    });
+  });
+
   // Dark/light mode
   const themeSwitch = document.getElementById('theme-switch');
   const savedLight = localStorage.getItem('theme') === 'light';
