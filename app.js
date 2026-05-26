@@ -113,6 +113,12 @@ function renderQueue(items) {
   const btnDeleteAll = document.getElementById('btn-delete-all');
   if (btnDeleteAll) btnDeleteAll.classList.toggle('hidden', items.length === 0);
 
+  const btnRunBlocking = document.getElementById('btn-run-blocking');
+  if (btnRunBlocking) {
+    const pendingCount = items.filter(i => i.status === 'pending').length;
+    btnRunBlocking.classList.toggle('hidden', pendingCount === 0);
+  }
+
   if (items.length === 0) {
     empty.classList.remove('hidden');
     table.classList.add('hidden');
@@ -243,6 +249,25 @@ async function addItem() {
   }
 }
 
+async function markAllReady() {
+  const pending = queueItems.filter(i => i.status === 'pending');
+  if (!pending.length) { showToast('Brak oczekujących domen', 'info'); return; }
+  const btn = document.getElementById('btn-run-blocking');
+  btn.disabled = true;
+  try {
+    pending.forEach(i => { i.status = 'ready'; });
+    const result = await saveQueue(queueItems, queueSha);
+    queueSha = result.content.sha;
+    renderQueue(queueItems);
+    showToast(`${pending.length} domen oznaczono jako gotowe — uruchom /block_queue w Claude`, 'success');
+  } catch (e) {
+    pending.forEach(i => { i.status = 'pending'; });
+    showToast('Błąd: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
 async function deleteAll() {
   if (!confirm(`Usunąć wszystkie ${queueItems.length} pozycji z kolejki?`)) return;
   try {
@@ -336,6 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Refresh — hard reload (bypass cache, jak Ctrl+Shift+R)
   document.getElementById('btn-refresh').addEventListener('click', () => location.reload(true));
   document.getElementById('btn-delete-all').addEventListener('click', deleteAll);
+  document.getElementById('btn-runblocking').addEventListener('click', markAllReady);
 
   // Add form
   document.getElementById('btn-add').addEventListener('click', addItem);
