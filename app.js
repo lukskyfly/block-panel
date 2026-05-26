@@ -361,7 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Refresh — hard reload (bypass cache, jak Ctrl+Shift+R)
   document.getElementById('btn-refresh').addEventListener('click', () => location.reload(true));
   document.getElementById('btn-delete-all').addEventListener('click', deleteAll);
-  document.getElementById('btn-runblocking').addEventListener('click', markAllReady);
+  const btnRunBlockingEl = document.getElementById('btn-run-blocking');
+  if (btnRunBlockingEl) btnRunBlockingEl.addEventListener('click', markAllReady);
 
   // Add form
   document.getElementById('btn-add').addEventListener('click', addItem);
