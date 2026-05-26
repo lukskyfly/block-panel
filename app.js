@@ -180,6 +180,44 @@ let queueSha   = null;
 let screenshotB64 = null;
 let screenshotExt = null;
 
+// === Stats ===
+async function loadStats() {
+  const el = document.getElementById('stats-counts');
+  if (!el) return;
+  const { repo, pat } = getConfig();
+  if (!repo || !pat) return;
+  try {
+    const file = await ghGet('stats.json');
+    const items = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g, '')))));
+    renderStats(items);
+  } catch (e) {
+    renderStats([]);
+  }
+}
+
+function renderStats(items) {
+  const el = document.getElementById('stats-counts');
+  if (!el) return;
+  const now = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const weekStart = new Date(now);
+  weekStart.setDate(now.getDate() - (now.getDay() === 0 ? 6 : now.getDay() - 1));
+  const weekStr = weekStart.toISOString().slice(0, 10);
+  const monthStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const yearStr  = `${now.getFullYear()}`;
+
+  const counts = [
+    { label: 'Dziś',       val: items.filter(i => i.date === today).length },
+    { label: 'Tydzień',    val: items.filter(i => i.date >= weekStr).length },
+    { label: 'Miesiąc',    val: items.filter(i => i.date.startsWith(monthStr)).length },
+    { label: 'Rok',        val: items.filter(i => i.date.startsWith(yearStr)).length },
+    { label: 'Wszystkie',  val: items.length },
+  ];
+  el.innerHTML = counts.map(c =>
+    `<span class="stat-item"><span class="stat-label">${c.label}</span><span class="stat-val">${c.val}</span></span>`
+  ).join('');
+}
+
 // === Actions ===
 async function loadAndRender() {
   document.getElementById('queue-loading').classList.remove('hidden');
@@ -190,6 +228,7 @@ async function loadAndRender() {
     queueItems = items;
     queueSha   = sha;
     renderQueue(items);
+    loadStats();
   } catch (e) {
     document.getElementById('queue-loading').textContent = 'Błąd ładowania: ' + e.message;
     showToast('Błąd: ' + e.message, 'error');
